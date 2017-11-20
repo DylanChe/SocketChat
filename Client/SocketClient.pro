@@ -4,7 +4,7 @@ QT += network
 
 CONFIG += c++11
 
-TARGET = Client
+TARGET = SocketClient
 CONFIG += console
 CONFIG -= app_bundle
 

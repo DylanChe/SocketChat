@@ -10,16 +10,9 @@ Client::Client()
     m_num_ordre = 0;
     m_tcpSocket = new QTcpSocket(this);
 
-    // La méthode lireTexte sera appelée sur le signal readyRead
     connect(m_tcpSocket, SIGNAL(readyRead()), this, SLOT(lireTexte()));
-
-    // La méthode ServeurTrouve sera appelée sur le signal hostFound
     connect(m_tcpSocket, SIGNAL(connected()), this, SLOT(connected()));
-
-    // La méthode ServeurTrouve sera appelée sur le signal disconnected
     connect(m_tcpSocket, SIGNAL(disconnected()), this, SLOT(deconnected()));
-
-    // La méthode afficherErreur sera appelée sur le signal error
     connect(m_tcpSocket, SIGNAL(error(QAbstractSocket::SocketError)),
             this, SLOT(afficherErreur(QAbstractSocket::SocketError)));
 
@@ -43,8 +36,9 @@ void Client::connexion()
     m_num_ordre++;
     std::cout << "Client numero " << m_num_ordre << std::endl;
 
-    // demande de connexion au serveur
-    m_tcpSocket->connectToHost( QHostAddress(QHostAddress::LocalHost).toString(),53000 );
+    QHostAddress serverAdress = QHostAddress("10.16.2.158");
+    m_tcpSocket->connectToHost( serverAdress.toString(),53000 );
+    //m_tcpSocket->connectToHost( QHostAddress(QHostAddress::LocalHost).toString(),53000 );
 }
 
 void Client::lireTexte()
