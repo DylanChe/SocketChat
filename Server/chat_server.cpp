@@ -113,16 +113,16 @@ void ChatServer::afficherErreur(QAbstractSocket::SocketError socketError)
 {
     switch (socketError) {
     case QAbstractSocket::RemoteHostClosedError:
-        std::cout << "ERROR : RemoteHostClosedError" << std::endl;
+        std::cout << "[ERROR] RemoteHostClosedError" << std::endl;
         break;
     case QAbstractSocket::HostNotFoundError:
-        std::cout << "ERROR : HostNotFoundError" << std::endl;
+        std::cout << "[ERROR] HostNotFoundError" << std::endl;
         break;
     case QAbstractSocket::ConnectionRefusedError:
-        std::cout << "ERROR : ConnectionRefusedError" << std::endl;
+        std::cout << "[ERROR] ConnectionRefusedError" << std::endl;
         break;
     default:
-        std::cout << "ERROR : Unknown error" << std::endl;
+        std::cout << "[ERROR] Unknown error" << std::endl;
         break;
     }
 }
